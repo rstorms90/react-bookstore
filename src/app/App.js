@@ -13,7 +13,7 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch('${this.apibase}/books')
+    const response = await fetch(`${this.apibase}/books`)
     if (response.status === 200) {
       let resJson = await response.json()
 
