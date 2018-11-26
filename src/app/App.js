@@ -15,11 +15,11 @@ export default class App extends Component {
   async componentDidMount() {
     const response = await fetch(`${this.apibase}/books`)
     if (response.status === 200) {
-      let resJson = await response.json()
+      let res = await response.json()
 
       this.setState({
         ...this.state,
-        books: resJson
+        books: res
       })
     } else {
       console.log('broken fetch', response)

@@ -14,7 +14,7 @@ const BookList = ({ item, addItemToCart}) => {
         <div>
             <div className="booksList">
                 <div><b>Title:</b> <i>{item.title}</i></div>
-                <div><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.subtitle}</i></div>
+                <div><i>{item.subtitle}</i></div>
                 <br />
                 <div><b>Author:</b> {item.author}</div>
                 <br />
