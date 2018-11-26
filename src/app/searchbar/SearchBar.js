@@ -1,42 +1,63 @@
 import React from 'react'
+import SearchList from './SearchResultsList'
 
 export default class SearchBar extends React.Component {
-    render() {
-        let searchResult
-        const filterSearch = (ev) => {
-            ev.preventDefault()
+    constructor(props) {
+        super(props) 
+        this.state = {
+            _book: []
+        }
+    }
 
-            let input = ev.target[2].value
-            let author = ev.target[0].checked
-            let title = ev.target[1].checked
-            let books = this.props.books
+    filterSearch = (ev) => {
+        ev.preventDefault()
 
-            ////CHECK INPUTS OF SEARCH\\\\
-            if (author === true && title === true) {
-                alert("Select 'Author' or 'Title'")
-            } else if (author === true && title === false) {
-                console.log("Author", input)
+        let input = ev.target[2].value
+        let author = ev.target[0].checked
+        let title = ev.target[1].checked
+        let books = this.props.books
+        let results = []
 
-            ////CHECK BOOKS AUTHORS\\\\
-            books.forEach((book) => {
-                if (book.author.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
-                    
-                    searchResult = book
-                    console.log("Search", searchResult.title)
-                    return searchResult
-                }
-            })
-            } else if (title === true && author === false) {
-                books.forEach((book) => {
-                    if (book.title.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
-                        searchResult = book
-                        return searchResult
+
+        ////CHECK INPUTS OF SEARCH\\\\
+        if (author === true && title === true) {
+            alert(`Select 'Author' or 'Title'`)
+        } else if (author === true && title === false) {
+
+
+        ////CHECK BOOKS AUTHORS\\\\
+        books.forEach((result) => {
+            if (result.author.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
+                // console.log(`Authors:`, searchResult.author)
+                results.push(result)
+                this.setState({
+                    ...this.state,
+                    _book: results,
+                    get Book() {
+                        return this._book
+                    },
+                    set book(val) {
+                        this._book = val
                     }
                 })
-            } else {
-                alert("Select a search option")
             }
+        })
+        } else if (title === true && author === false) {
+            books.forEach((result) => {
+                if (result.title.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
+                    // console.log(`Titles:`, searchResult.title)
+                    results.push(result)
+                    this.setState({
+                        ...this.state,
+                        book: results
+                    })
+                }
+            })
+        } else {
+            alert("Select a search option")
         }
+    }
+    render() {
         return (
             <div className="topnav">
                 <a className="active" href="/">Russ' Bookstore</a>
@@ -53,9 +74,7 @@ export default class SearchBar extends React.Component {
                     <input type="text" placeholder="Search..." />
                     <input type="submit" placeholder="Submit" />
                 </form>
-                <div className="searchResult">
-                    {searchResult}
-                </div>
+                <SearchList book={this.state.book}/>
             </div>
         )
     }
