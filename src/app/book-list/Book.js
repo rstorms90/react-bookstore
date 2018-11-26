@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Book = ({ item, addItemToCart}) => {
+const Book = ({ item, addToCartCallback}) => {
 
-    addItemToCart = function(ev) {
-        console.log('book list item', item)
-        return item
+    const addItemToCart = (ev) => {
+        let values = ev.target.value
+        addToCartCallback(values)
     }
 
     const date = item.published.split('T')[0]

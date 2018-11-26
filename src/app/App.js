@@ -14,6 +14,10 @@ export default class App extends Component {
     }
   }
 
+  onSearch = async ({ searchTerm, searchType }) => {
+    console.log(`${searchTerm}, ${searchType}`)
+  }
+
   async componentDidMount() {
     const response = await fetch(`${this.apibase}/books`)
     if (response.status === 200) {
@@ -36,14 +40,13 @@ export default class App extends Component {
   render() {
     return (
       <main className="App">
-        <Searchbar books={this.state.books} />
+        <Searchbar onSearch={this.onSearch} books={this.state.books} addToCartCallback={this.addToCartCallback}/>
 
       <hr />
-        <BookList items={this.state.books} addItemToCart={this.state.addItemToCart} />
+        <BookList items={this.state.books} addToCartCallback={this.addToCartCallback} />
         <div className="shoppingCart">
-        {/* Shopping List */}
-        <Total items={this.state.books} />
-        <button>Checkout</button>
+          <Total item={this.state.cart}/>
+          <Total items={this.state.books} />
         </div>
       </main>
     )
