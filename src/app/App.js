@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
-import BookItemsList from './book-list/BookItemsList'
+import BookList from './book-list/BookList'
 import Searchbar from './searchbar/SearchBar'
 import Total from './total/Total'
 
@@ -39,7 +39,7 @@ export default class App extends Component {
         <Searchbar books={this.state.books} />
 
       <hr />
-        <BookItemsList items={this.state.books} addItemToCart={this.state.addItemToCart} />
+        <BookList items={this.state.books} addItemToCart={this.state.addItemToCart} />
         <div className="shoppingCart">
         {/* Shopping List */}
         <Total items={this.state.books} />
