@@ -75,10 +75,10 @@ export default class App extends Component {
         <Searchbar onSearch={this.onSearch} onReset={this.getBookList} />
       <hr />
         <div className="row">
-          <div className="col-sm-6">
+          <div className="backing col-sm-6">
             <BookList getCart={this.getCart} bookList={this.state.bookList} />
           </div>
-          <div className="shoppingCart col-sm-6">
+          <div className="shoppingCart backing col-sm-6">
             <Cart onCart={this.getCart} cart={this.state.cart} total={this.state.total} />
           </div>
         </div>

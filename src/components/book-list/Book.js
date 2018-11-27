@@ -1,4 +1,5 @@
 import React from 'react'
+import './bookList.css'
 
 const Book = (props) => {
 
@@ -6,6 +7,7 @@ const Book = (props) => {
     const published = `${date.split('-')[1]}/${date.split('-')[2]}/${date.split('-')[0]}`
 
     return (
+
         <div>
             <div className="book">
                 <div><b>Title:</b> <i>{props.book.title}</i></div>
@@ -23,7 +25,7 @@ const Book = (props) => {
                 <br />
                 <div className="price">${props.book.price}.00</div>
                 <br />
-                <button onClick={props.onCart} id={props.book.id}>Add to Cart</button>
+                <button className="addToCart" onClick={props.onCart} id={props.book.id}>Add to Cart</button>
                 <hr />
                 <br />
             </div>

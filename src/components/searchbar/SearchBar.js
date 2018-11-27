@@ -43,7 +43,7 @@ export default class SearchBar extends React.Component {
                         <label htmlFor="title">&nbsp;Title</label>
                     </span>
                     <div>
-                    <input onChange={this.onSearchChange} type="text" name="searchbar" placeholder="Search..." /> &nbsp;
+                    <input className="searchbar" onChange={this.onSearchChange} type="text" name="searchbar" placeholder="Search..." /> &nbsp;
                     <input className="formButtons" type="submit" placeholder="Submit" />
                     </div>
                 </form>

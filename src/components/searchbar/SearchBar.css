@@ -1,9 +1,14 @@
 .topnav {
     font-family: Cinzel;
+    text-shadow: 2px 2px 5px;
 }
 
 label {
     color: white;
+}
+
+.searchbar {
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .formButtons {
@@ -14,6 +19,7 @@ label {
 }
 
 .bookstore {
-    font-size: 3em;
+    font-size: 4em;
+    font-weight: bold;
     color: white;
 }

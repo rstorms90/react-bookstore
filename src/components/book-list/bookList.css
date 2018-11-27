@@ -1,0 +1,10 @@
+.bookList {
+    font-family: Cinzel;
+    text-shadow: 2px 2px 10px;
+}
+
+.addToCart {
+    cursor: pointer;
+    background-color: transparent;
+    color: mediumspringgreen;
+}
