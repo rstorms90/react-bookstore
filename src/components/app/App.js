@@ -26,12 +26,18 @@ export default class App extends Component {
     this.setState({ bookList })
   }
 
-  getCart = (ev) => {
+  getCart = async (ev) => {
     let bookId = ev.target.id
-    console.log(bookId)
+    const bookListJson = await fetch(`${process.env.REACT_APP_API_URL}/books`)
+    let bookList = await bookListJson.json()
+    
+    let result = bookList.filter((book) => {
+      return book.id == bookId
+    })
 
     this.setState({
-      cart: bookId
+      ...this.state,
+      cart: this.state.cart.concat(result)
     })
   }
 
@@ -68,9 +74,11 @@ export default class App extends Component {
         <Searchbar onSearch={this.onSearch} books={this.state.books} onReset={this.getBookList} />
 
       <hr />
-        <BookList getCart={this.getCart} bookList={this.state.bookList} />
-        <div className="shoppingCart">
-          <Cart onCart={this.getCart} />
+      <div className="col-sm-6">
+      <BookList getCart={this.getCart} bookList={this.state.bookList} />
+      </div>
+        <div className="shoppingCart col-sm-6">
+          <Cart onCart={this.getCart} cart={this.state.cart} />
         </div>
       </main>
     )
