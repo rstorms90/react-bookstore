@@ -1,4 +1,5 @@
 import React from 'react'
+import './SearchBar.css'
 
 export default class SearchBar extends React.Component {
 
@@ -31,21 +32,22 @@ export default class SearchBar extends React.Component {
     render() {
         return (
             <div className="topnav">
-                <a className="active" href="/">Russ' Bookstore</a>
+                <a className="active bookstore" href="/">Russ' Bookstore</a>
                 <form onSubmit={this.onSubmit}>
-                    <div>
+                    <span>
                         <input type="radio" id="author" name="searchType" value="Author" defaultChecked />
-                        <label htmlFor="author">Author</label>
-                    </div>
-                    <div>
+                        <label htmlFor="author">&nbsp; Author &nbsp;</label>
+                    </span>
+                    <span>
                         <input type="radio" id="title" name="searchType" value="Title" />
-                        <label htmlFor="title">Title</label>
+                        <label htmlFor="title">&nbsp;Title</label>
+                    </span>
+                    <div>
+                    <input onChange={this.onSearchChange} type="text" name="searchbar" placeholder="Search..." /> &nbsp;
+                    <input className="formButtons" type="submit" placeholder="Submit" />
                     </div>
-
-                    <input onChange={this.onSearchChange} type="text" name="searchbar" placeholder="Search..." />
-                    <input type="submit" placeholder="Submit" />
                 </form>
-                <button onClick={this.props.onReset} id="reset">Reset</button>
+                <button className="formButtons" onClick={this.props.onReset} id="reset">Reset</button>
             </div>
         )
     }

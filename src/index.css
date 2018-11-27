@@ -1,4 +1,6 @@
 body {
+  background: url('https://images.unsplash.com/photo-1509266272358-7701da638078?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4cdcf509242e0a6bc60e27c0bbb78e82&auto=format&fit=crop&w=700&q=60');
+  color: white;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

@@ -1,0 +1,19 @@
+.topnav {
+    font-family: Cinzel;
+}
+
+label {
+    color: white;
+}
+
+.formButtons {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.bookstore {
+    font-size: 3em;
+    color: white;
+}

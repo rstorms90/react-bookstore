@@ -72,7 +72,7 @@ export default class App extends Component {
   render() {
     return (
       <main className="App container">
-        <Searchbar onSearch={this.onSearch} books={this.state.books} onReset={this.getBookList} />
+        <Searchbar onSearch={this.onSearch} onReset={this.getBookList} />
       <hr />
         <div className="row">
           <div className="col-sm-6">
