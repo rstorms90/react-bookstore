@@ -26,7 +26,7 @@ const Book = (props) => {
                 <div className="price">${props.book.price}.00</div>
                 <br />
                 <button className="addToCart" onClick={props.onCart} id={props.book.id}>Add to Cart</button>
-                <hr />
+                <hr className="line" />
                 <br />
             </div>
         </div>
