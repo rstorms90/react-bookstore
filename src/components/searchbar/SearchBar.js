@@ -19,9 +19,8 @@ export default class SearchBar extends React.Component {
 
     onSubmit = (ev) => {
         ev.preventDefault()
-        const searchType = ev.target.search.value
+        const searchType = ev.target.searchType.value
         const { searchTerm } = this.state
-        // console.log(ev.target.searchbar.value)
 
         this.props.onSearch({ searchTerm, searchType })
         this.setState({
@@ -46,6 +45,7 @@ export default class SearchBar extends React.Component {
                     <input onChange={this.onSearchChange} type="text" name="searchbar" placeholder="Search..." />
                     <input type="submit" placeholder="Submit" />
                 </form>
+                <button onClick={this.props.onReset} id="reset">Reset</button>
             </div>
         )
     }

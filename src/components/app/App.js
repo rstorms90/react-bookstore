@@ -2,26 +2,37 @@ import React, { Component } from 'react'
 import './App.css'
 import BookList from '../book-list/BookList'
 import Searchbar from '../searchbar/SearchBar'
+import Cart from '../cart/Cart'
 // import Total from './total/Total'
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      bookList: []
+      bookList: [],
+      cart: []
     }
   }
 
-  async componentDidMount() {
+  componentDidMount = async () => {
     await this.getBookList()
   }
 
-  async getBookList() {
+  getBookList = async () => {
     ////GET BOOKS\\\\
     const bookListJson = await fetch(`${process.env.REACT_APP_API_URL}/books`)
     let bookList = await bookListJson.json()
 
     this.setState({ bookList })
+  }
+
+  getCart = (ev) => {
+    let bookId = ev.target.id
+    console.log(bookId)
+
+    this.setState({
+      cart: bookId
+    })
   }
 
   onSearch = async ({ searchTerm, searchType }) => {
@@ -30,7 +41,7 @@ export default class App extends Component {
     let bookList = await bookListJson.json()
     let result
     switch (searchType) {
-      case 'title':
+      case 'Title':
         result = bookList.filter((book) => {
           return (book.title.includes(searchTerm))
         })
@@ -38,7 +49,7 @@ export default class App extends Component {
           bookList: result
         })
         break
-      case 'author':
+      case 'Author':
         result = bookList.filter((book) => {
           return (book.author.includes(searchTerm))
         })
@@ -51,19 +62,15 @@ export default class App extends Component {
     }
   }
 
-  // addItemToCart(book) {
-  //   console.log('added to cart:', book)
-  // }
-
   render() {
     return (
       <main className="App">
-        <Searchbar onSearch={this.onSearch} books={this.state.books} />
+        <Searchbar onSearch={this.onSearch} books={this.state.books} onReset={this.getBookList} />
 
       <hr />
-        <BookList bookList={this.state.bookList} />
+        <BookList getCart={this.getCart} bookList={this.state.bookList} />
         <div className="shoppingCart">
-
+          <Cart onCart={this.getCart} />
         </div>
       </main>
     )

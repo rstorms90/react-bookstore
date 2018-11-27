@@ -23,7 +23,7 @@ const Book = (props) => {
                 <br />
                 <div className="price">${props.book.price}.00</div>
                 <br />
-                <button id={props.book.id}>Add to Cart</button>
+                <button onClick={props.onCart} id={props.book.id}>Cart</button>
                 <hr />
                 <br />
             </div>
