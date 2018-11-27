@@ -79,7 +79,7 @@ export default class App extends Component {
             <BookList getCart={this.getCart} bookList={this.state.bookList} />
           </div>
           <div className="shoppingCart col-sm-6">
-            <Cart onCart={this.getCart} cart={this.state.cart} />
+            <Cart onCart={this.getCart} cart={this.state.cart} total={this.state.total} />
           </div>
         </div>
       </main>
