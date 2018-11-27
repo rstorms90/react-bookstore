@@ -3,14 +3,14 @@ import './App.css'
 import BookList from '../book-list/BookList'
 import Searchbar from '../searchbar/SearchBar'
 import Cart from '../cart/Cart'
-// import Total from './total/Total'
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       bookList: [],
-      cart: []
+      cart: [],
+      total: 0
     }
   }
 
@@ -37,7 +37,8 @@ export default class App extends Component {
 
     this.setState({
       ...this.state,
-      cart: this.state.cart.concat(result)
+      cart: this.state.cart.concat(result),
+      total: (this.state.cart.length + 1) * 5
     })
   }
 
@@ -70,15 +71,16 @@ export default class App extends Component {
 
   render() {
     return (
-      <main className="App">
+      <main className="App container">
         <Searchbar onSearch={this.onSearch} books={this.state.books} onReset={this.getBookList} />
-
       <hr />
-      <div className="col-sm-6">
-      <BookList getCart={this.getCart} bookList={this.state.bookList} />
-      </div>
-        <div className="shoppingCart col-sm-6">
-          <Cart onCart={this.getCart} cart={this.state.cart} />
+        <div className="row">
+          <div className="col-sm-6">
+            <BookList getCart={this.getCart} bookList={this.state.bookList} />
+          </div>
+          <div className="shoppingCart col-sm-6">
+            <Cart onCart={this.getCart} cart={this.state.cart} />
+          </div>
         </div>
       </main>
     )

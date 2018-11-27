@@ -1,6 +1,5 @@
 import React from 'react'
-import Book from '../book-list/Book'
-// import Total from '../total/Total'
+import CartItem from './CartItem'
 
 export default class Cart extends React.Component {
   constructor(props) {
@@ -10,15 +9,14 @@ export default class Cart extends React.Component {
   render(){
     return (
     <div>
+      <h2>Cart Total: ${this.props.total}.00</h2>
         <ul>
           {this.props.cart.map(
             (book, idx) => {
-              return <Book key={idx} book={book} />
+              return <CartItem key={idx} book={book} />
             }
           )}
         </ul>
-      <button>Remove</button>
-   
       <button>Checkout</button>
     </div>
     )
